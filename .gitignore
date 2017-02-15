@@ -1,6 +1,5 @@
 syntax: glob
 node_modules/
-dist/
 
 // OSx
 .DS_Store
