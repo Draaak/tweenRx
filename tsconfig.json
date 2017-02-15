@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "sourceMap": true,
+    "target": "es5"
+  },
+  "files": [
+    // "src/app.ts",
+    // "dts/es6-iterable.d.ts",    
+    "dts/es6-shim.d.ts"
+    // "node_modules/rxjs/Rx.d.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
