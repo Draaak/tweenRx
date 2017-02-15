@@ -1,8 +1,24 @@
 {
   "name": "tweenRx",
+  "author": "Draaak",
+  "license": "MIC",
   "version": "1.0.0",
   "description": "Exposing the usual tween functions through rx observables",
-  "main": "tweenRx.js",
+  "keywords": [
+    "rxjs",
+    "tween",
+    "ease"
+  ],
+  "homepage": "https://github.com/Draaak/tweenRx",
+  "bugs": "https://github.com/Draaak/tweenRx/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Draaak/tweenRx"
+  },
+  "main": "dist/tweenRx.min.js",
+  "peerDependencies": {
+    "rx": "5.x.x"
+  },
   "dependencies": {},
   "devDependencies": {
     "babel-core": "^6.23.1",
@@ -16,7 +32,5 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Draaak",
-  "license": "ISC"
+  }
 }
