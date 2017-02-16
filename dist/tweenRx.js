@@ -1,4 +1,4 @@
-module.exports =
+var tweenRx =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -346,7 +346,7 @@ exports.Ease = Ease;
 /* 1 */
 /***/ (function(module, exports) {
 
-module.exports = require("rxjs");
+module.exports = rxjs;
 
 /***/ }),
 /* 2 */

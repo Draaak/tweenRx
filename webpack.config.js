@@ -3,14 +3,13 @@ var path = require("path");
 
 module.exports = {
   entry: {
-    'tweenRx': './src/tween.ts',
-    'tweenRx.min': './src/tween.ts'
+    'tweenRx': './src/tween.ts'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),    
     filename: '[name].js',
     library: '[name]',
-    libraryTarget: 'commonjs2' // not sure if this is ideal !!!
+    libraryTarget: 'var'
   },
   externals: {
     'rxjs': 'rxjs'
@@ -23,12 +22,12 @@ module.exports = {
     ],
     extensions: ['.webpack.js', '.web.js', '.ts', '.js', '.min.js']
   },
-  plugins: [
-    new webpack.optimize.UglifyJsPlugin({
-      include: /\.min\.js$/,
-      minimize: true
-    })
-  ],  
+  // plugins: [
+  //   new webpack.optimize.UglifyJsPlugin({
+  //     include: /\.min\.js$/,
+  //     minimize: true
+  //   })
+  // ],  
   module: {
     rules: [
       {

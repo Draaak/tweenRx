@@ -1,8 +1,8 @@
 {
-  "name": "tweenRx",
-  "author": "Draaak",
+  "name": "tweenrx",
+  "author": "draaak",
   "license": "MIC",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Exposing the usual tween functions through rx observables",
   "keywords": [
     "rxjs",
@@ -15,9 +15,9 @@
     "type": "git",
     "url": "https://github.com/Draaak/tweenRx"
   },
-  "main": "dist/tweenRx.min.js",
+  "main": "dist/tweenRx.js",
   "peerDependencies": {
-    "rx": "5.x.x"
+    "rx": "5.*"
   },
   "dependencies": {},
   "devDependencies": {
