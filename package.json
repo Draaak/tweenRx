@@ -17,7 +17,7 @@
   },
   "main": "dist/tweenRx.js",
   "peerDependencies": {
-    "rx": "5.*"
+    "rxjs": "^5*"
   },
   "dependencies": {},
   "devDependencies": {

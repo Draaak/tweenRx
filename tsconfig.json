@@ -2,7 +2,13 @@
   "compilerOptions": {
     "module": "commonjs",
     "sourceMap": true,
-    "target": "es5"
+    "target": "es5",
+    "baseUrl": ".",
+    "paths": {
+      "src/*": [
+        "./src/*"
+      ]
+    }
   },
   "files": [
     // "src/app.ts",

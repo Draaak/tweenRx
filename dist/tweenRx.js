@@ -1,4 +1,4 @@
-var tweenRx =
+module.exports =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -283,10 +283,6 @@ var Ease = function () {
             return change / 2 * (-Math.pow(2, -10 * (time - 1)) + 2) + begin;
         }
     };
-    // static linearNone   = Observable.linear;
-    // static linearIn     = Observable.linear;
-    // static linearOut    = Observable.linear;
-    // static linearInOut  = Observable.linear;
     Ease.linear = function (time, begin, change, duration) {
         return change * time / duration + begin;
     };
@@ -346,7 +342,7 @@ exports.Ease = Ease;
 /* 1 */
 /***/ (function(module, exports) {
 
-module.exports = rxjs;
+module.exports = require("rxjs");
 
 /***/ }),
 /* 2 */
@@ -355,8 +351,14 @@ module.exports = rxjs;
 "use strict";
 
 
-var Rx = __webpack_require__(1);
+function __export(m) {
+    for (var p in m) {
+        if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+    }
+}
+var rx = __webpack_require__(1);
 var ease_1 = __webpack_require__(0);
+__export(__webpack_require__(0));
 var Tween = function () {
     function Tween() {}
     Tween.create = function (options) {
@@ -417,10 +419,6 @@ var Tween = function () {
     Tween.expoInOut = function (options) {
         return Tween.observable(options, ease_1.Ease.expoInOut);
     };
-    // static linearNone   = Observable.linear;
-    // static linearIn     = Observable.linear;
-    // static linearOut    = Observable.linear;
-    // static linearInOut  = Observable.linear;
     Tween.linear = function (options) {
         return Tween.observable(options, ease_1.Ease.linear);
     };
@@ -465,16 +463,16 @@ var Tween = function () {
         if (options.interval <= 0) {
             var start_1 = Date.now();
             var endTime_1 = start_1 + options.duration;
-            return Rx.Observable.interval(0, Rx.Scheduler.animationFrame).timestamp().map(function (time) {
+            return rx.Observable.interval(0, rx.Scheduler.animationFrame).timestamp().map(function (time) {
                 return ease(time.timestamp - start_1, options.begin, options.change, options.duration);
             }).takeWhile(function (val, index) {
                 return Date.now() < endTime_1;
-            }).concat(Rx.Observable.of(end)).distinct();
+            }).concat(rx.Observable.of(end)).distinct();
         } else {
             var ticks = Math.round(options.duration / options.interval);
-            return Rx.Observable.interval(options.interval).take(ticks).map(function (tick) {
+            return rx.Observable.interval(options.interval).take(ticks).map(function (tick) {
                 return ease(tick * options.interval, options.begin, end, options.duration);
-            }).concat(Rx.Observable.of(end)).distinct();
+            }).concat(rx.Observable.of(end)).distinct();
         }
     };
     return Tween;

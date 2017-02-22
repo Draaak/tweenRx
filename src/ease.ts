@@ -19,7 +19,7 @@ export enum EaseShape {
 };
 
 export class Ease {
-
+  
   static getEase(func: EaseFunc, shape: EaseShape) {
     let name = Ease.getMember(func, shape);
     return Ease[name];
@@ -194,11 +194,6 @@ export class Ease {
       return change / 2 * (-Math.pow(2, -10 * (time - 1)) + 2) + begin;
     }
   }
-
-  // static linearNone   = Observable.linear;
-  // static linearIn     = Observable.linear;
-  // static linearOut    = Observable.linear;
-  // static linearInOut  = Observable.linear;
 
   static linear(time, begin, change, duration) {
     return change * time / duration + begin;
