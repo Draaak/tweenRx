@@ -1,170 +1,177 @@
+// TODO: fixed precision or maybe supply generic type (can then use int) or round or maybe a convert function
+// TODO: start from begin(0) option
+
 import * as rx from 'rxjs';
 
-import { Ease, EaseFunc, EaseShape} from './ease';
+import { Func, Ease }  from './ease';
 
 export * from './ease';
 
-export interface ITweenOptions {
-  begin: number,
-  change: number,
-  duration: number,
-  interval: number
-}
-
-export interface ITweenEaseOptions extends ITweenOptions {
-  easeFunc: EaseFunc;
-  easeShape: EaseShape;
-}
-
 export class Tween {
-  static create(options: ITweenEaseOptions): rx.Observable<number> {
-    let func = Ease.getEase(options.easeFunc, options.easeShape);
-    return Tween.observable(options, func);
+  static create(easeFunc: Func, begin: number, change: number, duration: number, interval: number): rx.Observable<number> {
+    // let func = Ease.getEase(options.easeFunc);
+    return Tween.observable(Ease.getEase(easeFunc), begin, change, duration, interval);
   }
 
-  static backIn(options: ITweenOptions): rx.Observable<number> {
-    return Tween.observable(options, Ease.backIn);
+  static backIn(begin: number, change: number, duration: number, interval: number): rx.Observable<number> {
+    return Tween.observable(Ease.backIn, begin, change, duration, interval);
   }
 
-  static backOut(options: ITweenOptions): rx.Observable<number> {
-    return Tween.observable(options, Ease.backOut);
+  static backOut(begin: number, change: number, duration: number, interval: number): rx.Observable<number> {
+    return Tween.observable(Ease.backOut, begin, change, duration, interval);
   }
 
-  static backInOut(options: ITweenOptions): rx.Observable<number> {
-    return Tween.observable(options, Ease.backInOut);
+  static backInOut(begin: number, change: number, duration: number, interval: number): rx.Observable<number> {
+    return Tween.observable(Ease.backInOut, begin, change, duration, interval);
   }
 
-  static bounceIn(options: ITweenOptions): rx.Observable<number> {
-    return Tween.observable(options, Ease.bounceIn);
+  static bounceIn(begin: number, change: number, duration: number, interval: number): rx.Observable<number> {
+    return Tween.observable(Ease.bounceIn, begin, change, duration, interval);
   }
 
-  static bounceOut(options: ITweenOptions): rx.Observable<number> {
-    return Tween.observable(options, Ease.bounceOut);
+  static bounceOut(begin: number, change: number, duration: number, interval: number): rx.Observable<number> {
+    return Tween.observable(Ease.bounceOut, begin, change, duration, interval);
   }
 
-  static bounceInOut(options: ITweenOptions): rx.Observable<number> {
-    return Tween.observable(options, Ease.bounceInOut);
+  static bounceInOut(begin: number, change: number, duration: number, interval: number): rx.Observable<number> {
+    return Tween.observable(Ease.bounceInOut, begin, change, duration, interval);
   }
 
-  static circIn(options: ITweenOptions): rx.Observable<number> {
-    return Tween.observable(options, Ease.circIn);
+  static circIn(begin: number, change: number, duration: number, interval: number): rx.Observable<number> {
+    return Tween.observable(Ease.circIn, begin, change, duration, interval);
   }
 
-  static circOut(options: ITweenOptions): rx.Observable<number> {
-    return Tween.observable(options, Ease.circOut);
+  static circOut(begin: number, change: number, duration: number, interval: number): rx.Observable<number> {
+    return Tween.observable(Ease.circOut, begin, change, duration, interval);
   }
 
-  static circInOut(options: ITweenOptions): rx.Observable<number> {
-    return Tween.observable(options, Ease.circInOut);
+  static circInOut(begin: number, change: number, duration: number, interval: number): rx.Observable<number> {
+    return Tween.observable(Ease.circInOut, begin, change, duration, interval);
   }
 
-  static cubicIn(options: ITweenOptions): rx.Observable<number> {
-    return Tween.observable(options, Ease.cubicIn);
+  static cubicIn(begin: number, change: number, duration: number, interval: number): rx.Observable<number> {
+    return Tween.observable(Ease.cubicIn, begin, change, duration, interval);
   }
 
-  static cubicOut(options: ITweenOptions): rx.Observable<number> {
-    return Tween.observable(options, Ease.cubicOut);
+  static cubicOut(begin: number, change: number, duration: number, interval: number): rx.Observable<number> {
+    return Tween.observable(Ease.cubicOut, begin, change, duration, interval);
   }
 
-  static cubicInOut(options: ITweenOptions): rx.Observable<number> {
-    return Tween.observable(options, Ease.cubicInOut);
+  static cubicInOut(begin: number, change: number, duration: number, interval: number): rx.Observable<number> {
+    return Tween.observable(Ease.cubicInOut, begin, change, duration, interval);
   }
 
-  static elasticOut(options: ITweenOptions): rx.Observable<number> {
-    return Tween.observable(options, Ease.elasticOut);
+  static elasticOut(begin: number, change: number, duration: number, interval: number): rx.Observable<number> {
+    return Tween.observable(Ease.elasticOut, begin, change, duration, interval);
   }
 
-  static elasticIn(options: ITweenOptions): rx.Observable<number> {
-    return Tween.observable(options, Ease.elasticIn);
+  static elasticIn(begin: number, change: number, duration: number, interval: number): rx.Observable<number> {
+    return Tween.observable(Ease.elasticIn, begin, change, duration, interval);
   }
 
-  static elasticInOut(options: ITweenOptions): rx.Observable<number> {
-    return Tween.observable(options, Ease.elasticInOut);
+  static elasticInOut(begin: number, change: number, duration: number, interval: number): rx.Observable<number> {
+    return Tween.observable(Ease.elasticInOut, begin, change, duration, interval);
   }
 
-  static expoIn(options: ITweenOptions): rx.Observable<number> {
-    return Tween.observable(options, Ease.expoIn);
+  static expoIn(begin: number, change: number, duration: number, interval: number): rx.Observable<number> {
+    return Tween.observable(Ease.expoIn, begin, change, duration, interval);
   }
 
-  static expoOut(options: ITweenOptions): rx.Observable<number> {
-    return Tween.observable(options, Ease.expoOut);
+  static expoOut(begin: number, change: number, duration: number, interval: number): rx.Observable<number> {
+    return Tween.observable(Ease.expoOut, begin, change, duration, interval);
   }
 
-  static expoInOut(options: ITweenOptions): rx.Observable<number> {
-    return Tween.observable(options, Ease.expoInOut);
+  static expoInOut(begin: number, change: number, duration: number, interval: number): rx.Observable<number> {
+    return Tween.observable(Ease.expoInOut, begin, change, duration, interval);
   }
 
-  static linear(options: ITweenOptions): rx.Observable<number> {
-    return Tween.observable(options, Ease.linear);
+  static linear(begin: number, change: number, duration: number, interval: number): rx.Observable<number> {
+    return Tween.observable(Ease.linear, begin, change, duration, interval);
   }
 
-  static quadIn(options: ITweenOptions): rx.Observable<number> {
-    return Tween.observable(options, Ease.quadIn);
+  static quadIn(begin: number, change: number, duration: number, interval: number): rx.Observable<number> {
+    return Tween.observable(Ease.quadIn, begin, change, duration, interval);
   }
 
-  static quadOut(options: ITweenOptions): rx.Observable<number> {
-    return Tween.observable(options, Ease.quadOut);
+  static quadOut(begin: number, change: number, duration: number, interval: number): rx.Observable<number> {
+    return Tween.observable(Ease.quadOut, begin, change, duration, interval);
   }
 
-  static quadInOut(options: ITweenOptions): rx.Observable<number> {
-    return Tween.observable(options, Ease.quadInOut);
+  static quadInOut(begin: number, change: number, duration: number, interval: number): rx.Observable<number> {
+    return Tween.observable(Ease.quadInOut, begin, change, duration, interval);
   }
 
-  static quartIn(options: ITweenOptions): rx.Observable<number> {
-    return Tween.observable(options, Ease.quartIn);
+  static quartIn(begin: number, change: number, duration: number, interval: number): rx.Observable<number> {
+    return Tween.observable(Ease.quartIn, begin, change, duration, interval);
   }
 
-  static quartOut(options: ITweenOptions): rx.Observable<number> {
-    return Tween.observable(options, Ease.quartOut);
+  static quartOut(begin: number, change: number, duration: number, interval: number): rx.Observable<number> {
+    return Tween.observable(Ease.quartOut, begin, change, duration, interval);
   }
 
-  static quartInOut(options: ITweenOptions): rx.Observable<number> {
-    return Tween.observable(options, Ease.quartInOut);
+  static quartInOut(begin: number, change: number, duration: number, interval: number): rx.Observable<number> {
+    return Tween.observable(Ease.quartInOut, begin, change, duration, interval);
   }
 
-  static quintIn(options: ITweenOptions): rx.Observable<number> {
-    return Tween.observable(options, Ease.quintIn);
+  static quintIn(begin: number, change: number, duration: number, interval: number): rx.Observable<number> {
+    return Tween.observable(Ease.quintIn, begin, change, duration, interval);
   }
 
-  static quintOut(options: ITweenOptions): rx.Observable<number> {
-    return Tween.observable(options, Ease.quintOut);
+  static quintOut(begin: number, change: number, duration: number, interval: number): rx.Observable<number> {
+    return Tween.observable(Ease.quintOut, begin, change, duration, interval);
   }
 
-  static quintInOut(options: ITweenOptions): rx.Observable<number> {
-    return Tween.observable(options, Ease.quintInOut);
+  static quintInOut(begin: number, change: number, duration: number, interval: number): rx.Observable<number> {
+    return Tween.observable(Ease.quintInOut, begin, change, duration, interval);
   }
 
-  static sineIn(options: ITweenOptions): rx.Observable<number> {
-    return Tween.observable(options, Ease.sineIn);
+  static sineIn(begin: number, change: number, duration: number, interval: number): rx.Observable<number> {
+    return Tween.observable(Ease.sineIn, begin, change, duration, interval);
   }
 
-  static sineOut(options: ITweenOptions): rx.Observable<number> {
-    return Tween.observable(options, Ease.sineOut);
+  static sineOut(begin: number, change: number, duration: number, interval: number): rx.Observable<number> {
+    return Tween.observable(Ease.sineOut, begin, change, duration, interval);
   }
 
-  static sineInOut(options: ITweenOptions): rx.Observable<number> {
-    return Tween.observable(options, Ease.sineInOut);
+  static sineInOut(begin: number, change: number, duration: number, interval: number): rx.Observable<number> {
+    return Tween.observable(Ease.sineInOut, begin, change, duration, interval);
   }
 
-  private static observable(options: ITweenOptions, ease: any): rx.Observable<number> {
-    const end = options.begin + options.change;
-    if (options.interval <= 0) { //asume request animation frame
-      let start = Date.now();
-      let endTime = start + options.duration;
+  static quadraticBezier(begin: number, change: number, duration: number, interval: number, p1y: number): rx.Observable<number> {
+    return Tween.observable(Ease.sineInOut, begin, change, duration, interval);
+  }
+
+  static cubicBezier(begin: number, change: number, duration: number, interval: number, p1y: number, p2y: number): rx.Observable<number> {
+    return Tween.observable(Ease.sineInOut, begin, change, duration, interval);
+  }  
+
+  static bezier(begin: number, change: number, duration: number, interval: number, ...points): rx.Observable<number> {
+    return Tween.observable(Ease.bezier, begin, change, duration, interval, ...points);
+  }  
+
+  private static observable(ease: any, begin: number, change: number, duration: number, interval: number, ...extra): rx.Observable<number> {
+    const end = begin + change;
+    if (interval <= 0) { //asume request animation frame
+      let start = undefined;
+      let endTime = undefined;
       return rx.Observable
         .interval(0, rx.Scheduler.animationFrame)
         .timestamp()
         .map((time) => {
-          return ease(time.timestamp - start, options.begin, options.change, options.duration)
+          if (!start) {
+            start = Date.now();
+            endTime = start + duration;
+          }          
+          return ease(time.timestamp - start, begin, change, duration, ...extra).toFixed(2)
         })
         .takeWhile((val, index) => Date.now() < endTime)
         .concat(rx.Observable.of(end))
         .distinct();
     } else { //might need to sanity check this !!!
-      const ticks = Math.round(options.duration / options.interval);
-      return rx.Observable.interval(options.interval)
+      const ticks = Math.round(duration / interval);
+      return rx.Observable.interval(interval)
         .take(ticks)
-        .map(tick => ease(tick * options.interval, options.begin, end, options.duration))
+        .map(tick => ease(tick * interval, begin, end, duration, ...extra).toFixed(2))
         .concat(rx.Observable.of(end))
         .distinct();        
     }

@@ -1,35 +1,47 @@
-export enum EaseFunc {
-  Back,
-  Bounce,
-  Circ,
-  Cubic,
-  Elastic,
-  Expo,
+export enum Func {
+  BackIn,
+  BackOut,
+  BackInOut,
+  BounceOut,
+  BounceIn,
+  BounceInOut,
+  CircIn,
+  CircOut,
+  CircInOut,
+  CubicIn,
+  CubicOut,
+  CubicInOut,
+  ElasticOut,
+  ElasticIn,
+  ElasticInOut,
+  ExpoIn,
+  ExpoOut,
+  ExpoInOut,
   Linear,
-  Quad,
-  Quart,
-  Quint,
-  Sine
-};
-
-export enum EaseShape {
-  In,
-  Out,
-  InOut
+  QuadIn,
+  QuadOut,
+  QuadInOut,
+  QuartIn,
+  QuartOut,
+  QuartInOut,
+  QuintIn,
+  QuintOut,
+  QuintInOut,
+  SineIn,
+  SineOut,
+  SineInOut,
+  QuadraticBezier,
+  CubicBezier,
+  Bezier
 };
 
 export class Ease {
-  
-  static getEase(func: EaseFunc, shape: EaseShape) {
-    let name = Ease.getMember(func, shape);
-    return Ease[name];
-  }
 
-  private static getMember(func: EaseFunc, shape: EaseShape = EaseShape.In): string {
-    if (func == EaseFunc.Linear) {
-      shape = EaseShape.In;
-    }
-    return EaseFunc[func].toLowerCase() + EaseShape[shape];
+  static getEase(func: Func) {
+    // TODO: shitty I know... but want to get it going for now
+    const text = Func[func];
+    const fname = text.charAt(0).toLowerCase() + text.slice(1);
+    return Ease[fname];
   }
 
   static backIn(time, begin, change, duration, overshoot = 1.70158) {
@@ -257,5 +269,29 @@ export class Ease {
 
   static sineInOut(time, begin, change, duration) {
     return -change / 2 * (Math.cos(Math.PI * time / duration) - 1) + begin;
+  }
+
+  static quadraticBezier(time, begin, change, duration, p1y) {
+    const t = time / duration;
+    const _1t = 1 - t;
+    return _1t * _1t * begin + 2 * _1t * t * p1y + t * t * (begin + change);
+  }
+
+  static cubicBezier(time, begin, change, duration, p1y, p2y) {
+    const t = time / duration;
+    const _1t = 1 - t;
+    return _1t * _1t * _1t * begin + 3 * _1t * _1t * t * p1y + 3 * _1t * t * t * p2y + t * t * t * (begin + change);
+  }
+
+  static bezier(time, begin, change, duration, ...points) {
+    const t = time / duration;
+    const _1t = 1 - t;
+    const cnt = points.length + 1;
+
+    let sum = 0;
+    for (let i = 1; i < points.length; i++) {
+      sum += cnt * Math.pow(_1t, cnt - i) * Math.pow(t, i) * points[i];
+    }    
+    return Math.pow(_1t, cnt) * begin + sum + Math.pow(t, cnt) * (begin + change);
   }
 }
