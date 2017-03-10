@@ -138,16 +138,16 @@ export class Tween {
   }
 
   static quadraticBezier(begin: number, change: number, duration: number, interval: number, p1y: number): rx.Observable<number> {
-    return Tween.observable(Ease.sineInOut, begin, change, duration, interval);
+    return Tween.observable(Ease.quadraticBezier, begin, change, duration, interval, p1y);
   }
 
   static cubicBezier(begin: number, change: number, duration: number, interval: number, p1y: number, p2y: number): rx.Observable<number> {
-    return Tween.observable(Ease.sineInOut, begin, change, duration, interval);
+    return Tween.observable(Ease.cubicBezier, begin, change, duration, interval, p1y, p2y);
   }  
 
   static bezier(begin: number, change: number, duration: number, interval: number, ...points): rx.Observable<number> {
     return Tween.observable(Ease.bezier, begin, change, duration, interval, ...points);
-  }  
+  }
 
   private static observable(ease: any, begin: number, change: number, duration: number, interval: number, ...extra): rx.Observable<number> {
     const end = begin + change;

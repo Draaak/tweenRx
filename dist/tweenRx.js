@@ -494,10 +494,10 @@ var Tween = function () {
         return Tween.observable(ease_1.Ease.sineInOut, begin, change, duration, interval);
     };
     Tween.quadraticBezier = function (begin, change, duration, interval, p1y) {
-        return Tween.observable(ease_1.Ease.sineInOut, begin, change, duration, interval);
+        return Tween.observable(ease_1.Ease.quadraticBezier, begin, change, duration, interval, p1y);
     };
     Tween.cubicBezier = function (begin, change, duration, interval, p1y, p2y) {
-        return Tween.observable(ease_1.Ease.sineInOut, begin, change, duration, interval);
+        return Tween.observable(ease_1.Ease.cubicBezier, begin, change, duration, interval, p1y, p2y);
     };
     Tween.bezier = function (begin, change, duration, interval) {
         var points = [];
