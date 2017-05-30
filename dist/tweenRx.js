@@ -74,52 +74,8 @@ module.exports =
 "use strict";
 
 
-var Func;
-(function (Func) {
-    Func[Func["BackIn"] = 0] = "BackIn";
-    Func[Func["BackOut"] = 1] = "BackOut";
-    Func[Func["BackInOut"] = 2] = "BackInOut";
-    Func[Func["BounceOut"] = 3] = "BounceOut";
-    Func[Func["BounceIn"] = 4] = "BounceIn";
-    Func[Func["BounceInOut"] = 5] = "BounceInOut";
-    Func[Func["CircIn"] = 6] = "CircIn";
-    Func[Func["CircOut"] = 7] = "CircOut";
-    Func[Func["CircInOut"] = 8] = "CircInOut";
-    Func[Func["CubicIn"] = 9] = "CubicIn";
-    Func[Func["CubicOut"] = 10] = "CubicOut";
-    Func[Func["CubicInOut"] = 11] = "CubicInOut";
-    Func[Func["ElasticOut"] = 12] = "ElasticOut";
-    Func[Func["ElasticIn"] = 13] = "ElasticIn";
-    Func[Func["ElasticInOut"] = 14] = "ElasticInOut";
-    Func[Func["ExpoIn"] = 15] = "ExpoIn";
-    Func[Func["ExpoOut"] = 16] = "ExpoOut";
-    Func[Func["ExpoInOut"] = 17] = "ExpoInOut";
-    Func[Func["Linear"] = 18] = "Linear";
-    Func[Func["QuadIn"] = 19] = "QuadIn";
-    Func[Func["QuadOut"] = 20] = "QuadOut";
-    Func[Func["QuadInOut"] = 21] = "QuadInOut";
-    Func[Func["QuartIn"] = 22] = "QuartIn";
-    Func[Func["QuartOut"] = 23] = "QuartOut";
-    Func[Func["QuartInOut"] = 24] = "QuartInOut";
-    Func[Func["QuintIn"] = 25] = "QuintIn";
-    Func[Func["QuintOut"] = 26] = "QuintOut";
-    Func[Func["QuintInOut"] = 27] = "QuintInOut";
-    Func[Func["SineIn"] = 28] = "SineIn";
-    Func[Func["SineOut"] = 29] = "SineOut";
-    Func[Func["SineInOut"] = 30] = "SineInOut";
-    Func[Func["QuadraticBezier"] = 31] = "QuadraticBezier";
-    Func[Func["CubicBezier"] = 32] = "CubicBezier";
-    Func[Func["Bezier"] = 33] = "Bezier";
-})(Func = exports.Func || (exports.Func = {}));
-;
 var Ease = function () {
     function Ease() {}
-    Ease.getEase = function (func) {
-        // TODO: shitty I know... but want to get it going for now
-        var text = Func[func];
-        var fname = text.charAt(0).toLowerCase() + text.slice(1);
-        return Ease[fname];
-    };
     Ease.backIn = function (time, begin, change, duration, overshoot) {
         if (overshoot === void 0) {
             overshoot = 1.70158;
@@ -392,121 +348,10 @@ function __export(m) {
     }
 }
 var rx = __webpack_require__(1);
-var ease_1 = __webpack_require__(0);
 __export(__webpack_require__(0));
 var Tween = function () {
     function Tween() {}
-    Tween.create = function (easeFunc, begin, change, duration, interval) {
-        // let func = Ease.getEase(options.easeFunc);
-        return Tween.observable(ease_1.Ease.getEase(easeFunc), begin, change, duration, interval);
-    };
-    Tween.backIn = function (begin, change, duration, interval) {
-        return Tween.observable(ease_1.Ease.backIn, begin, change, duration, interval);
-    };
-    Tween.backOut = function (begin, change, duration, interval) {
-        return Tween.observable(ease_1.Ease.backOut, begin, change, duration, interval);
-    };
-    Tween.backInOut = function (begin, change, duration, interval) {
-        return Tween.observable(ease_1.Ease.backInOut, begin, change, duration, interval);
-    };
-    Tween.bounceIn = function (begin, change, duration, interval) {
-        return Tween.observable(ease_1.Ease.bounceIn, begin, change, duration, interval);
-    };
-    Tween.bounceOut = function (begin, change, duration, interval) {
-        return Tween.observable(ease_1.Ease.bounceOut, begin, change, duration, interval);
-    };
-    Tween.bounceInOut = function (begin, change, duration, interval) {
-        return Tween.observable(ease_1.Ease.bounceInOut, begin, change, duration, interval);
-    };
-    Tween.circIn = function (begin, change, duration, interval) {
-        return Tween.observable(ease_1.Ease.circIn, begin, change, duration, interval);
-    };
-    Tween.circOut = function (begin, change, duration, interval) {
-        return Tween.observable(ease_1.Ease.circOut, begin, change, duration, interval);
-    };
-    Tween.circInOut = function (begin, change, duration, interval) {
-        return Tween.observable(ease_1.Ease.circInOut, begin, change, duration, interval);
-    };
-    Tween.cubicIn = function (begin, change, duration, interval) {
-        return Tween.observable(ease_1.Ease.cubicIn, begin, change, duration, interval);
-    };
-    Tween.cubicOut = function (begin, change, duration, interval) {
-        return Tween.observable(ease_1.Ease.cubicOut, begin, change, duration, interval);
-    };
-    Tween.cubicInOut = function (begin, change, duration, interval) {
-        return Tween.observable(ease_1.Ease.cubicInOut, begin, change, duration, interval);
-    };
-    Tween.elasticOut = function (begin, change, duration, interval) {
-        return Tween.observable(ease_1.Ease.elasticOut, begin, change, duration, interval);
-    };
-    Tween.elasticIn = function (begin, change, duration, interval) {
-        return Tween.observable(ease_1.Ease.elasticIn, begin, change, duration, interval);
-    };
-    Tween.elasticInOut = function (begin, change, duration, interval) {
-        return Tween.observable(ease_1.Ease.elasticInOut, begin, change, duration, interval);
-    };
-    Tween.expoIn = function (begin, change, duration, interval) {
-        return Tween.observable(ease_1.Ease.expoIn, begin, change, duration, interval);
-    };
-    Tween.expoOut = function (begin, change, duration, interval) {
-        return Tween.observable(ease_1.Ease.expoOut, begin, change, duration, interval);
-    };
-    Tween.expoInOut = function (begin, change, duration, interval) {
-        return Tween.observable(ease_1.Ease.expoInOut, begin, change, duration, interval);
-    };
-    Tween.linear = function (begin, change, duration, interval) {
-        return Tween.observable(ease_1.Ease.linear, begin, change, duration, interval);
-    };
-    Tween.quadIn = function (begin, change, duration, interval) {
-        return Tween.observable(ease_1.Ease.quadIn, begin, change, duration, interval);
-    };
-    Tween.quadOut = function (begin, change, duration, interval) {
-        return Tween.observable(ease_1.Ease.quadOut, begin, change, duration, interval);
-    };
-    Tween.quadInOut = function (begin, change, duration, interval) {
-        return Tween.observable(ease_1.Ease.quadInOut, begin, change, duration, interval);
-    };
-    Tween.quartIn = function (begin, change, duration, interval) {
-        return Tween.observable(ease_1.Ease.quartIn, begin, change, duration, interval);
-    };
-    Tween.quartOut = function (begin, change, duration, interval) {
-        return Tween.observable(ease_1.Ease.quartOut, begin, change, duration, interval);
-    };
-    Tween.quartInOut = function (begin, change, duration, interval) {
-        return Tween.observable(ease_1.Ease.quartInOut, begin, change, duration, interval);
-    };
-    Tween.quintIn = function (begin, change, duration, interval) {
-        return Tween.observable(ease_1.Ease.quintIn, begin, change, duration, interval);
-    };
-    Tween.quintOut = function (begin, change, duration, interval) {
-        return Tween.observable(ease_1.Ease.quintOut, begin, change, duration, interval);
-    };
-    Tween.quintInOut = function (begin, change, duration, interval) {
-        return Tween.observable(ease_1.Ease.quintInOut, begin, change, duration, interval);
-    };
-    Tween.sineIn = function (begin, change, duration, interval) {
-        return Tween.observable(ease_1.Ease.sineIn, begin, change, duration, interval);
-    };
-    Tween.sineOut = function (begin, change, duration, interval) {
-        return Tween.observable(ease_1.Ease.sineOut, begin, change, duration, interval);
-    };
-    Tween.sineInOut = function (begin, change, duration, interval) {
-        return Tween.observable(ease_1.Ease.sineInOut, begin, change, duration, interval);
-    };
-    Tween.quadraticBezier = function (begin, change, duration, interval, p1y) {
-        return Tween.observable(ease_1.Ease.quadraticBezier, begin, change, duration, interval, p1y);
-    };
-    Tween.cubicBezier = function (begin, change, duration, interval, p1y, p2y) {
-        return Tween.observable(ease_1.Ease.cubicBezier, begin, change, duration, interval, p1y, p2y);
-    };
-    Tween.bezier = function (begin, change, duration, interval) {
-        var points = [];
-        for (var _i = 4; _i < arguments.length; _i++) {
-            points[_i - 4] = arguments[_i];
-        }
-        return Tween.observable.apply(Tween, [ease_1.Ease.bezier, begin, change, duration, interval].concat(points));
-    };
-    Tween.observable = function (ease, begin, change, duration, interval) {
+    Tween.create = function (ease, begin, change, duration, interval) {
         var extra = [];
         for (var _i = 5; _i < arguments.length; _i++) {
             extra[_i - 5] = arguments[_i];

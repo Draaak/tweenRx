@@ -1,48 +1,4 @@
-export enum Func {
-  BackIn,
-  BackOut,
-  BackInOut,
-  BounceOut,
-  BounceIn,
-  BounceInOut,
-  CircIn,
-  CircOut,
-  CircInOut,
-  CubicIn,
-  CubicOut,
-  CubicInOut,
-  ElasticOut,
-  ElasticIn,
-  ElasticInOut,
-  ExpoIn,
-  ExpoOut,
-  ExpoInOut,
-  Linear,
-  QuadIn,
-  QuadOut,
-  QuadInOut,
-  QuartIn,
-  QuartOut,
-  QuartInOut,
-  QuintIn,
-  QuintOut,
-  QuintInOut,
-  SineIn,
-  SineOut,
-  SineInOut,
-  QuadraticBezier,
-  CubicBezier,
-  Bezier
-};
-
 export class Ease {
-
-  static getEase(func: Func) {
-    // TODO: shitty I know... but want to get it going for now
-    const text = Func[func];
-    const fname = text.charAt(0).toLowerCase() + text.slice(1);
-    return Ease[fname];
-  }
 
   static backIn(time, begin, change, duration, overshoot = 1.70158) {
     return change * (time /= duration) * time * ((overshoot + 1) * time - overshoot) + begin;
