@@ -8,7 +8,29 @@ import { Ease }  from './ease';
 export * from './ease';
 
 export class Tween {
-  static create(ease: any, begin: number, change: number, duration: number, interval: number, ...extra): rx.Observable<number> {
+  private _obs: rx.Observable<number>;
+
+  constructor(private targets: any[], private update: any, private ease: any, private begin: number, private change: number, private duration: number, private interval: number, ...extra) {
+    this._obs = Tween.observable(ease, begin, change, duration, interval, extra);
+  }
+
+  play() {
+    this._obs.subscribe((val:number) => {
+      this.targets.forEach((x) => this.update(x))
+    });
+  }
+
+  stop() {
+
+  }
+
+  reverse() {
+
+  }
+
+
+
+  static observable(ease: any, begin: number, change: number, duration: number, interval: number, ...extra): rx.Observable<number> {
     const end = begin + change;
     if (interval <= 0) { //asume request animation frame
       let start = undefined;

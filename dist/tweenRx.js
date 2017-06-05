@@ -350,8 +350,31 @@ function __export(m) {
 var rx = __webpack_require__(1);
 __export(__webpack_require__(0));
 var Tween = function () {
-    function Tween() {}
-    Tween.create = function (ease, begin, change, duration, interval) {
+    function Tween(targets, update, ease, begin, change, duration, interval) {
+        var extra = [];
+        for (var _i = 7; _i < arguments.length; _i++) {
+            extra[_i - 7] = arguments[_i];
+        }
+        this.targets = targets;
+        this.update = update;
+        this.ease = ease;
+        this.begin = begin;
+        this.change = change;
+        this.duration = duration;
+        this.interval = interval;
+        this._obs = Tween.observable(ease, begin, change, duration, interval, extra);
+    }
+    Tween.prototype.play = function () {
+        var _this = this;
+        this._obs.subscribe(function (val) {
+            _this.targets.forEach(function (x) {
+                return _this.update(x);
+            });
+        });
+    };
+    Tween.prototype.stop = function () {};
+    Tween.prototype.reverse = function () {};
+    Tween.observable = function (ease, begin, change, duration, interval) {
         var extra = [];
         for (var _i = 5; _i < arguments.length; _i++) {
             extra[_i - 5] = arguments[_i];
