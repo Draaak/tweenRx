@@ -2,7 +2,7 @@
   "name": "tweenrx",
   "author": "draaak",
   "license": "MIC",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Exposing the usual tween functions through rx observables",
   "keywords": [
     "rxjs",
